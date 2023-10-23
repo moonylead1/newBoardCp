@@ -44,7 +44,7 @@ void boardSetup(){ //make a new board for new game
     case 3:
       board = boardGenarate(19, 19);
     default:
-      cout << "Warning: no board was generated. Proceed? [y] - yes, [n] - no.";
+      cout << "Warning: no board was generated. Proceed? [Y] - yes, [N] - no : ";
       string afterCall;
       cin >> afterCall;
       if (afterCall == "n" or afterCall == "N"){
