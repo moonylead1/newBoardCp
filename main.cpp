@@ -12,9 +12,9 @@ int stoneColorSelect(){
   if (currentMove % 2 == 0){
     return 2;
   }
-  return 1
+  return 1;
 }
-vector <vector <int>> generateBoard(length, width){
+vector <vector <int>> generateBoard(int length, int width){
   vector<vector<int>> newBoard( length , vector<int> (width, 0));
   return newBoard;
 }
@@ -42,13 +42,13 @@ void boardSetup(){ //make a new board for new game
 
 void boardMove (){ //moves
   int x, y;
-  cout << "Enter coordinates x, y: "
+  cout << "Enter coordinates x, y: ";
   cin >> x >> y;
   board[x][y] = stoneColorSelect();
   currentMove++;
 }
 
-void commandList() { //command list executable;
+void commandList(string command) { //command list executable;
   if (command == "open new" or command == "on"){
     boardSetup();
   }
