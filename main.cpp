@@ -8,71 +8,9 @@
 #include "Command.h"
 using namespace std;
 
+Board newBoard;
 vector <vector <int>> board; // init of a board
 string command = ""; // string for command;
-int currentMove = 1; // first move by default is black
-
-
-void boardShow(vector<vector <int>> board){                           // show current board
-  for (int width = 0; width < board.size(); width++){
-    for (int length = 0; length < board.size(); length++){
-      cout << board[width][length] << " ";
-    }
-    cout << endl;
-  }
-}
-
-int stoneColorSelect(){
-  if (currentMove % 2 == 0){
-    return 2;
-  }
-  return 1;
-}
-
-vector <vector <int>> boardGenarate(int length, int width){           // generate board
-  vector<vector<int>> newBoard( length , vector<int> (width, 0));     // clear board with zero init
-  return newBoard;
-}
-
-
-void boardSetup(){ //make a new board for new game
-  int task;
-  cout << "1. (std9x9) 9x9 board;\n2. (std13x13) 13x13 board;\n3. (std19x19) 19x19 board\nEnter 1-3: ";
-  cin >> task;
-  switch (task) {
-    case 1:
-      board = boardGenarate(9, 9);
-      break;
-    case 2:
-      board = boardGenarate(13, 13);
-      break;
-    case 3:
-      board = boardGenarate(19, 19);
-    default:
-      cout << "Warning: no board was generated. Proceed? [Y] - yes, [N] - no : ";
-      string afterCall;
-      cin >> afterCall;
-      if (afterCall == "n" or afterCall == "N"){
-        break;
-      }
-  }
-}
-
-
-void boardMove (){ //moves
-  int x, y;
-  Stone newStone;                                                   //idea to make a table where to write a save for a board with
-  cout << "Enter coordinates x, y: ";                               //all stones inside, and make a recover for it
-  cin >> x >> y;                                                    //also looking forward to make moves back and trees for them
-  newStone.positionX = x-1;
-  newStone.positionY = y-1;
-  newStone.color = stoneColorSelect();
-  board[newStone.positionX][newStone.positionY] = newStone.color;
-  currentMove++;
-  cout << "Current move: " << currentMove-1 << endl;
-  boardShow(board);
-}
-
 
 void commandQuit(){
   cout << "Quit command requested. Proceed? [Y] - yes, [N] - no : ";
@@ -83,13 +21,14 @@ void commandQuit(){
   }
 }
 
-
 void commandList(string command) { //command list executable; //later need an upd to write an class with it to not get oaver load on the main code
-  if (command == "open new" or command == "on"){
-    boardSetup();
+
+  if (command == "startup" or command == "su"){
+    newBoard.boardSetup();
   }
+
   if (command == "move" or command == "m"){
-    boardMove();
+    newBoard.boardMove();
   }
   if (command=="quit" or command == "q"){
     commandQuit();
