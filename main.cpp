@@ -2,11 +2,14 @@
 #include <math.h>
 #include <vector>
 #include <stdlib.h>
+
+#include "Stone.h"
 using namespace std;
 
 vector <vector <int>> board; // init of a board
 string command = ""; // string for command;
 int currentMove = 1; // first move by default is black
+
 
 void boardShow(vector<vector <int>> board){                           // show current board
   for (int width = 0; width < board.size(); width++){
@@ -55,13 +58,19 @@ void boardSetup(){ //make a new board for new game
 
 void boardMove (){ //moves
   int x, y;
-  cout << "Enter coordinates x, y: ";
-  cin >> x >> y;
-  board[x-1][y-1] = stoneColorSelect();
+  Stone newStone;                                                   //idea to make a table where to write a save for a board with
+  cout << "Enter coordinates x, y: ";                               //all stones inside, and make a recover for it
+  cin >> x >> y;                                                    //also looking forward to make moves back and trees for them
+  newStone.positionX = x-1;
+  newStone.positionY = y-1;
+  newStone.color = stoneColorSelect();
+  board[newStone.positionX][newStone.positionY] = newStone.color;
   currentMove++;
   cout << "Current move: " << currentMove-1 << endl;
   boardShow(board);
 }
+
+
 void commandQuit(){
   cout << "Quit command requested. Proceed? [Y] - yes, [N] - no : ";
   string afterCall;
@@ -70,7 +79,7 @@ void commandQuit(){
     exit(1);
   }
 }
-void commandList(string command) { //command list executable;
+void commandList(string command) { //command list executable; //later need an upd to write an class with it to not get oaver load on the main code
   if (command == "open new" or command == "on"){
     boardSetup();
   }
@@ -91,3 +100,5 @@ int main (int argc, char *argv[]) {
   }
   return 0;
 }
+
+
