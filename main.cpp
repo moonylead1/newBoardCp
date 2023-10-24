@@ -4,6 +4,8 @@
 #include <stdlib.h>
 
 #include "Stone.h"
+#include "Board.h"
+#include "Command.h"
 using namespace std;
 
 vector <vector <int>> board; // init of a board
@@ -56,6 +58,7 @@ void boardSetup(){ //make a new board for new game
   }
 }
 
+
 void boardMove (){ //moves
   int x, y;
   Stone newStone;                                                   //idea to make a table where to write a save for a board with
@@ -79,6 +82,8 @@ void commandQuit(){
     exit(1);
   }
 }
+
+
 void commandList(string command) { //command list executable; //later need an upd to write an class with it to not get oaver load on the main code
   if (command == "open new" or command == "on"){
     boardSetup();
