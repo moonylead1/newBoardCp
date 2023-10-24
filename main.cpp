@@ -3,9 +3,9 @@
 #include <vector>
 #include <stdlib.h>
 
-#include "Stone.h"
-#include "Board.h"
-#include "Command.h"
+#include "Stone.h" //stone setups
+#include "Board.h" //board setups, moves
+#include "GameChecker.h" // checker for rules
 using namespace std;
 
 Board newBoard;
@@ -26,7 +26,6 @@ void commandList(string command) { //command list executable; //later need an up
   if (command == "startup" or command == "su"){
     newBoard.boardSetup();
   }
-
   if (command == "move" or command == "m"){
     newBoard.boardMove();
   }
