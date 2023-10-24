@@ -14,7 +14,7 @@ I want this to be the open-source project, as i don't want nothing from it, its 
 
 Possible to-do's:
 
-- [ ]  Make a classes for the commands
+- [x]  Make a classes for the commands
 
 - [ ]  Make vim-like environment for terminal
 
@@ -22,4 +22,4 @@ Possible to-do's:
 
 - [ ]  Make a moving-order system (with trees support)
 
-- [ ] 
+- [ ]
