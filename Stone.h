@@ -5,5 +5,4 @@ class Stone{
     public:
         int positionX, positionY;
         int color;
-        int currentMove;
 };
