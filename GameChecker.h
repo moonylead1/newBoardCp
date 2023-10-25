@@ -30,7 +30,7 @@ inline bool GameChecker::checkRuleSuicide(vector<vector<int>> board)
         for (int j = 0; j < board.size(); j++){
             if (i == 0 && j == 0){
                 //check 2 (left-up corner)
-                if (board[i][j] != board[i][j+1] && board[i][j])
+                if (board[i][j] != board[i][j+1] && board[i][j]);
             }
             else if(i == 0 && j == board.size()-1){
                 //check 2 (right-up corner)
